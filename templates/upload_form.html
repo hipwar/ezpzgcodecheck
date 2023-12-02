@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GCode Galaxy</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Welcome to GCode Galaxy</h1>
+        <p>Your ultimate 3D printing universe</p>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="/">Home Base</a></li>
+            <li><a href="/upload">Upload Nebula</a></li>
+            <li><a href="/gallery">Print Constellations</a></li>
+            <li><a href="/about">About the Cosmos</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h2>File Upload Portal</h2>
+        <form method="post" action="/upload" enctype="multipart/form-data">
+            <input type="file" name="file" />
+            <input type="submit" value="Launch File" />
+        </form>
+    </main>
+    <footer>
+        <p>&copy; 2023 GCode Galaxy - Exploring the Frontiers of 3D Printing</p>
+    </footer>
+</body>
+</html>

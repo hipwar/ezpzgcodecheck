@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GCode File Gallery</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>GCode Galaxy - Gallery</h1>
+    </header>
+    <nav>
+        <!-- Navigation Content (can be similar to upload_form.html) -->
+    </nav>
+    <main>
+        <h2>GCode Files in the Cosmos</h2>
+        <ul>
+            {% for file in files %}
+                <li>{{ file['filename'] }}, Upload Time: {{ file['uploadtime'] }}
+                     - <a href="{{ url_for('visualize_gcode', filename=file['filename']) }}">Visualize</a>
+                </li>
+            {% else %}
+                <p>No files found in the galaxy.</p>
+            {% endfor %}
+        </ul>
+    </main>
+    <footer>
+        <!-- Footer Content -->
+    </footer>
+</body>
+</html>

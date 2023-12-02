@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload Result</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Most Recent Upload</h1>
+    {% if latest_upload %}
+        <p>File Name: {{ latest_upload['filename'] }}</p>
+        <p>File Path: {{ latest_upload['filepath'] }}</p>
+        <p>File Size: {{ latest_upload['filesize'] }} bytes</p>
+        <p>Upload Time: {{ latest_upload['uploadtime'] }}</p>
+    {% else %}
+        <p>No uploads found.</p>
+    {% endif %}
+    <a href="{{ url_for('index') }}">Back to Upload</a>
+</body>
+</html>

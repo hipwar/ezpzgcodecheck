@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Visualize GCode - {{ filename }}</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <!-- Header Content -->
+    </header>
+    <nav>
+        <!-- Navigation Content -->
+    </nav>
+    <main>
+        <h2>Visualizing: {{ filename }}</h2>
+        <script src="https://cdn.jsdelivr.net/npm/three/build/three.min.js"></script>
+            <script>
+                let scene, camera, renderer;
+            
+                function init() {
+// Scene setup
+const scene = new THREE.Scene();
+
+// Camera setup
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+camera.position.z = 5;
+
+// Renderer setup
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
+
+function drawLine(start, end) {
+        const material = new THREE.LineBasicMaterial({ color: 0x0000ff });
+        const points = [];
+        points.push(new THREE.Vector3(start.x, start.y, start.z));
+        points.push(new THREE.Vector3(end.x, end.y, end.z));
+        const geometry = new THREE.BufferGeometry().setFromPoints(points);
+        const line = new THREE.Line(geometry, material);
+        scene.add(line);
+    }
+
+    // Load and render G-code lines
+    fetch('static/parsed_gcode.json')
+        .then(response => response.json())
+        .then(data => {
+            for (let i = 0; i < data.length - 1; i++) {
+                drawLine(data[i], data[i + 1]);
+            }
+        });
+
+render();
+
+                }
+            
+                function render() {
+                    requestAnimationFrame(render);
+                    renderer.render(scene, camera);
+                }
+            
+                // Call the init function when the window loads
+                window.onload = init;
+            </script>
+            
+
+    </main>
+    <footer>
+        <!-- Footer Content -->
+    </footer>
+</body>
+</html>

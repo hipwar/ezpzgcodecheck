@@ -1,0 +1,28 @@
+header {
+    background-color: #333;
+    color: rgb(243, 124, 124);
+    text-align: center;
+    padding: 1em 0;
+}
+
+nav {
+    background-color: #f2f2f2;
+    padding: 1em;
+    width: 200px;
+    float: left;
+}
+
+main {
+    margin-left: 220px;
+    padding: 1em;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 1em 0;
+}
